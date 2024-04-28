@@ -11,10 +11,15 @@ function loadAfter$() {
     var str = 'https://www.youtube.com/watch_videos?feature=c4-overview&type=0&video_ids=';
 	var videos = new Array();
 	var elements = new Array();
-	elements = $('ytd-grid-video-renderer').each(function(){
-	  var url = $(this).find('[id=\'thumbnail\'][rel=\'null\']').attr('href').replace('/watch?v=', '').split('&')[0];
-	  var views = $(this).find('span[class=\'style-scope ytd-grid-video-renderer\']').first().text();
+	elements = $('ytd-rich-item-renderer').each(function(){
+	  var url = $(this).find('[id=\'thumbnail\'][rel=\'null\']').attr('href').replace('/watch?v=', '').replace('/shorts/', '').split('&')[0];
+	  // Must be exact string.
+	  var views = $(this).find('span[class=\'inline-metadata-item style-scope ytd-video-meta-block\']').first().text();
 	  
+	  if (views.length <= 0) {
+		  window.alert('Wrong path.');
+		  return;
+	  }
 	  views = views.replace(' views', '');
 
 	  if (views.includes('K')) {views = parseFloat(views) * 1000}  else if 
@@ -32,9 +37,10 @@ function loadAfter$() {
 		//console.log(videos[i]['v']);
 		str = str + videos[i]['u'] + ',';
 	}
+	alert(str);
 	window.location = str;
 }
 
 const t = setTimeout(loadAfter$, 1000);
 
-
+// Call the function for test purpouses.
