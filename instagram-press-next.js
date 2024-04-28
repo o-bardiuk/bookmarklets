@@ -1,4 +1,4 @@
-var bn = 3;
+var bn = 0;
 var clickEvent = new MouseEvent('click', {
     'view': window,
     'bubbles': true,
