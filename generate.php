@@ -9,6 +9,7 @@ $html = <<<html
 html;
 
 $files = [
+	['tik-tok-sort.js', 'TikTok - pop-up with most viewed', 'TT 🔝 Viewed'],
 	['youtube-most-viewed.js', 'Creates a playlist of recent videos sorted by popularity', '🔝 YouTube Recent Most Viewed'],
 	['youtube-play-recent.js', 'Creates a playlist of recent videos that are visible on the page at the moment', '▶️ YouTube Play Recent'],
 	['instagram-press-next.js', 'Open an instagram photo and it will click next for you', '👉 Instagram - Auto Next'],

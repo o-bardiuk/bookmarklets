@@ -7,20 +7,18 @@
 	let videos = new Array();
 	let url;
 	let views;
-	let elements = document.getElementsByTagName('ytd-rich-item-renderer');
-
+	let elements = document.getElementsByClassName('e19c29qe8');
 	[...elements].forEach(element => {
 
-		let url = element.querySelector('a').getAttribute('href');
-		let name = element.querySelector('#video-title').innerHTML;
-		let views = element.getElementsByClassName('inline-metadata-item style-scope ytd-video-meta-block')[0].innerHTML;
-		views = views.replace(' views', '');
+		let url = element.querySelector('a');
+		let views = element.getElementsByClassName('video-count')[0].innerHTML;
+		
 		if (views.includes('K')) {views = parseFloat(views) * 1000}  else if
 		(views.includes('M')) {views = parseFloat(views) * 1000000} else if
 		(views.includes('B')) {views = parseFloat(views) * 1000000000};
 
-		videos.push({u: url, v: views, n: name});
-
+		videos.push({u: url, v: views});
+		
 	});
 
 	videos.sort((a, b) => (a.v > b.v) ? -1 : 1);
@@ -39,7 +37,6 @@
       background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: flex-start;
-      z-index: 3000;
     }
 
     .popup-content {
@@ -53,12 +50,10 @@
     #arrayList {
       list-style-type: none;
       padding: 0;
-      text-align: left;
     }
     
     #arrayList a {
     	font-family: monospace;
-    	font-size: 16px !important;
     }
     
     #arrayList a:visited {
@@ -72,7 +67,7 @@
       cursor: pointer;
     }
   `;
-	document.head.appendChild(style);
+    document.head.appendChild(style);
 	// Create popup elements dynamically
 	const popup = document.createElement('div');
 	popup.id = 'popup';
@@ -101,14 +96,14 @@
 
 		const link = document.createElement('a');
 		link.href = item['u'];
-		link.textContent = item['v'] + ' ' + item['n'];
+		link.textContent = item['v'];
 		link.target = '_blank';
-
+				
 		li.appendChild(link);
 		arrayList.appendChild(li);
 	});
 
-	// Show the popup
+		// Show the popup
 	popup.style.display = 'flex';
 
 	// Add event listener to close popup button
@@ -117,4 +112,11 @@
 		popup.style.display = 'none';
 	});
 })();
+
+
+
+
+
+
+
 
