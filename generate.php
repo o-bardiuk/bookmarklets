@@ -14,6 +14,7 @@ $files = [
 	['youtube-play-recent.js', 'Creates a playlist of recent videos that are visible on the page at the moment', '▶️ YouTube Play Recent'],
 	['instagram-press-next.js', 'Open an instagram photo and it will click next for you', '👉 Instagram - Auto Next'],
 	['general-auto-scroll-down.js', 'Srolls page down every X seconds', '👇 Auto Scroll Down'],
+	['sound-cloud-sort-visible.js', 'Sound Cloud Show Most Played', '🔥 Sound Cloud'],
 ];
 
 foreach ($files as $file) {

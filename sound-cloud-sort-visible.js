@@ -3,21 +3,25 @@
  */
 
 (function () {
-
+	debugger;
 	let videos = new Array();
 	let url;
 	let views;
-	let elements = document.getElementsByTagName('ytd-rich-item-renderer');
+	let elements = document.getElementsByClassName('soundList__item');
 
 	[...elements].forEach(element => {
 
-		let url = element.querySelector('a').getAttribute('href');
-		let name = element.querySelector('#video-title').innerHTML;
-		let views = element.getElementsByClassName('inline-metadata-item style-scope ytd-video-meta-block')[0].innerHTML;
-		views = views.replace(' views', '');
-		if (views.includes('K')) {views = parseFloat(views) * 1000}  else if
-		(views.includes('M')) {views = parseFloat(views) * 1000000} else if
-		(views.includes('B')) {views = parseFloat(views) * 1000000000};
+		let url = 'https://soundcloud.com' + element.querySelector('a.sound__coverArt').getAttribute('href');
+		let name = element.querySelector('.soundTitle__title span').innerHTML;
+		let views_c = element.querySelector('.sc-ministats-plays');
+		let views = views_c.querySelector('.sc-visuallyhidden');
+		
+		if (views) {
+			views = views.innerHTML;
+			views = views.replace(' plays', '');
+			views = views.replace(',', '');
+			views = parseFloat(views);
+		}
 
 		videos.push({u: url, v: views, n: name});
 
