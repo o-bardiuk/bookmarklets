@@ -12,8 +12,8 @@
 	[...elements].forEach(element => {
 
 		let url = element.querySelector('a').getAttribute('href');
-		let name = element.querySelector('#video-title').innerHTML;
-		let views = element.getElementsByClassName('inline-metadata-item style-scope ytd-video-meta-block')[0].innerHTML;
+		let name = element.querySelector('.ytLockupMetadataViewModelTitle .ytAttributedStringHost').innerHTML;
+		let views = element.querySelector('.ytLockupMetadataViewModelMetadata .ytAttributedStringHost').innerHTML;
 		views = views.replace(' views', '');
 		if (views.includes('K')) {views = parseFloat(views) * 1000}  else if
 		(views.includes('M')) {views = parseFloat(views) * 1000000} else if
